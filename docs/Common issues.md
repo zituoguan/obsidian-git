@@ -1,42 +1,41 @@
 ## xcrun: error: invalid developer path
 
-This is an error occurring only on macOS. It's easy to fix though. Just run the following snippet in the terminal. `xcode-select --install` See #64 as an example.
+此错误仅发生在 macOS 上。修复方法很简单，只需在终端运行以下命令：`xcode-select --install`。参见 #64 作为示例。
 
-## Error: spansSync git ENOENT/ Cannot run Git command
+## Error: spansSync git ENOENT/ 无法运行 Git 命令
 
-This occurs, when the plugin can't find the Git executable. It takes it from the PATH. Head over to [[Installation]] to see if everything is properly installed for your platform.
-If you think everything is correctly set up and the error still occurs try the following:
+当插件找不到 Git 可执行文件时会出现此错误。插件会从 PATH 环境变量中查找 Git。请前往 [[Installation]] 检查你的平台是否已正确安装。
+如果你确认一切设置正确但仍然报错，请尝试以下方法：
 
-In case you know where Git is installed, you can set the path under "Custom Git binary path" in the settings. If you don't know where Git is installed, you can try to find it by running the following in the terminal:
+如果你知道 Git 的安装路径，可以在设置中“自定义 Git 可执行文件路径”进行设置。如果你不知道 Git 安装在哪里，可以在终端运行以下命令查找：
 
 ### Windows
 
-Run `where git` in the terminal. It should return the path to the Git executable. If it fails, Git is not properly installed.
+在终端运行 `where git`。它应该会返回 Git 可执行文件的路径。如果失败，说明 Git 没有正确安装。
 
 ### Linux/MacOS
 
-Run `which git` in the terminal. It should return the path to the Git executable. If it fails, Git is not properly installed.
+在终端运行 `which git`。它应该会返回 Git 可执行文件的路径。如果失败，说明 Git 没有正确安装。
 
-## Infinite pulling/pushing with no error
+## 无限拉取/推送且无报错
 
-That's most time caused by authentication problems. Head over to [[Authentication]]
+这通常是由于认证问题导致的。请前往 [[Authentication]]。
 
-## Bad owner or permissions on /home/\<user>/.ssh/config
+## /home/\<user>/.ssh/config 权限或所有者错误
 
-Run `chmod 600 ~/.ssh/config` in the terminal.
+在终端运行 `chmod 600 ~/.ssh/config`。
 
+## `.gitignore` 文件未生效
 
-## Files in `.gitignore` aren't ignored
+插件使用的是本地 Git 安装。如果 `.gitignore` 文件书写正确且 Git 正常使用，一切都应该正常。
 
-Since the plugin uses the native git installation, I can assure you that if the `.gitignore` file is properly written and git is correctly used, everything should work.
+需要注意的是，一旦文件已被提交（或已暂存），修改 `.gitignore` 并不会生效。你需要手动将文件从仓库中删除才能正确忽略该文件：
+1. 在终端运行 `git rm --cached <file>`。该文件会保留在你的文件系统中，只是在仓库中被删除。
+2. 在 `git status` 中应显示该文件已被删除
+3. 提交此次删除操作
+4. 之后对该文件的更改就会被正确忽略
 
-It's important to note that once a file is committed (or staged) changing the `.gitignore` doesn't help. You have to delete the file from your repo manually to ignore the file properly:
-1. Run `git rm --cached <file>` in your terminal. The file will stay on your file system. It's just deleted in your repo.
-2. The file should be listed as deleted in `git status`
-3. Commit the deletion
-4. Now any changes to the file are properly ignored.
-
-## Cannot run gpg
+## 无法运行 gpg
 
 ```
 Error: error: cannot run gpg: No such file or directory
@@ -44,8 +43,8 @@ error: gpg failed to sign the data
 fatal: failed to write commit object
 ```
 
-See [[Integration with other tools#GPG Signing]] on how to solve this.
+请参见 [[Integration with other tools#GPG Signing]] 了解解决方法。
 
-## This repository is configured for Git LFS but 'git-lfs' was not found on your path.
+## 此仓库已配置 Git LFS，但未在路径中找到 'git-lfs'
 
-See [[Integration with other tools#Git Large File Storage]] on how to solve this.
+请参见 [[Integration with other tools#Git Large File Storage]] 了解解决方法。

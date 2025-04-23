@@ -3,45 +3,44 @@ aliases:
   - "01 Start here"
 ---
 
-# Git plugin Documentation
+# Git 插件文档
 
-## Topics
-- [[Installation|Installation]]
-- [[Getting Started|Getting Started]]
-- [[Authentication|Authentication]]
-- [[Integration with other tools]]
-- [[Features|Features]]
-- [[Tips-and-Tricks|Tips-and-Tricks]]
-- [[Common issues|Common Issues]]
-- [[Line Authoring|Line Authoring]]
+## 主题
+- [[Installation|安装]]
+- [[Getting Started|快速开始]]
+- [[Authentication|身份验证]]
+- [[Integration with other tools|与其他工具集成]]
+- [[Features|功能]]
+- [[Tips-and-Tricks|技巧与提示]]
+- [[Common issues|常见问题]]
+- [[Line Authoring|行作者]]
 
-> [!warning] Obsidian installation on Linux
-> Please don't use Flatpak or Snap to install Obsidian on Linux. Learn more [[Installation#Linux|here]]
-
+> [!warning] 在 Linux 上安装 Obsidian
+> 请不要使用 Flatpak 或 Snap 在 Linux 上安装 Obsidian。了解更多信息请点击 [[Installation#Linux|这里]]
 
 ![[Getting Started#Performance on mobile]]
 
-## What is Git?
+## 什么是 Git？
 
-Git is a version control system. It allows you to keep track of changes to your notes and revert back to previous versions. It also allows you to collaborate with other people on the same files. You can read more about Git [here](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control).
+Git 是一个版本控制系统。它可以帮助你跟踪笔记的更改，并回退到之前的版本。它还允许你与其他人协作编辑同一文件。你可以在[这里](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)阅读更多关于 Git 的信息。
 
-> [!info] Git/GitHub is not a syncing service!
-> Git is not meant to share your changes live to the cloud or another person. Meaning it should not be used to work with someone live on the same note. However it's perfect for async collaboration.
+> [!info] Git/GitHub 不是同步服务！
+> Git 并不是用来实时将你的更改同步到云端或其他人的工具。这意味着它不适合多人同时实时编辑同一笔记。但它非常适合异步协作。
 
-You build your history by batching multiple changes into commits. These can then be reverted or checked out. You can view the difference between version of a note via the [Version History Diff](obsidian://show-plugin?id=obsidian-version-history-diff) plugin.
-Git itself only manages a local repository. It becomes really handy in conjunction with an online remote repository. You can push and pull your commits to/from a remote repository to share or backup your vault. The most popular provider is [GitHub](https://github.com). 
+你可以通过将多次更改批量提交为一次提交（commit）来构建历史记录。这些提交可以被还原或检出。你可以通过 [Version History Diff](obsidian://show-plugin?id=obsidian-version-history-diff) 插件查看笔记不同版本之间的差异。
+Git 本身只管理本地仓库。结合在线远程仓库使用时会非常方便。你可以将提交推送到远程仓库或从远程仓库拉取提交，以便共享或备份你的库。最流行的远程仓库服务商是 [GitHub](https://github.com)。
 
-Git is primarily used by developers and thus the command line is sometimes needed. Obsidian-Git is a plugin for Obsidian that allows you to use Git from within Obsidian without always having to use the command line or leaving Obsidian.
+Git 主要被开发者使用，因此有时需要使用命令行。Obsidian-Git 是 Obsidian 的一个插件，可以让你在 Obsidian 内直接使用 Git，无需频繁切换到命令行或离开 Obsidian。
 
-## Terminology and concepts
+## 术语与概念
 
-### Backup - no longer in use
-For simplification, the term "Backup" refers to staging everything -> committing -> pulling -> pushing.
+### 备份（已不再使用）
+为简化说明，"备份" 指的是暂存所有更改 -> 提交 -> 拉取 -> 推送。
 
-### Sync
+### 同步
 
-Syncing is the process of pulling and pushing changes to and from a remote repository. This is done to keep your local repository up to date with the remote repository on e.g. GitHub. 
+同步是指将更改从远程仓库拉取到本地，或将本地更改推送到远程仓库的过程。这样可以确保你的本地仓库与如 GitHub 等远程仓库保持一致。
 
-### Commit-and-sync
+### 提交并同步
 
-Commit-and-sync is the process of staging everything -> committing -> pulling -> pushing. Ideally this is a single action that you do regularly to keep your local and remote repository in sync. It's recommended you set it up from the plugin's settings to be run automatically every X minutes. You can also disable the pulling or pushing part from the "Commit-and-sync" section in the plugin's settings. This reduces the "commit-and-sync" action to either a "commit and pull", "commit and push" or just commit action.
+提交并同步是指暂存所有更改 -> 提交 -> 拉取 -> 推送。理想情况下，这应该是你定期执行的单一操作，以保持本地和远程仓库同步。建议你在插件设置中配置自动定时执行。你也可以在插件设置的“提交并同步”部分禁用拉取或推送操作，这样“提交并同步”就可以只执行“提交并拉取”、“提交并推送”或仅提交操作。

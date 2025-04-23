@@ -1,42 +1,42 @@
-## Source Control View
+## 源代码控制视图
 
-Open it using the "Open source control view" command. It lists all current changes like when you run `git status`. It provides the following features
+通过“打开源代码控制视图”命令打开。它会列出所有当前更改，类似于运行 `git status` 时的效果。该视图提供以下功能：
 
-- Stage/Unstage individual files
-- Discard any changes to a specific file
-- Open the diff view for changed files
-- Stage/Unstage all files
-- Push/Pull
-- Commit or [[Start here#commit-and-sync|commit-and-sync]]
-- Switch between list and tree view using the button at the top
+- 暂存/取消暂存单个文件
+- 放弃对特定文件的更改
+- 打开已更改文件的差异视图
+- 暂存/取消暂存所有文件
+- 推送/拉取
+- 提交或 [[Start here#commit-and-sync|提交并同步]]
+- 可通过顶部按钮在列表视图和树状视图之间切换
 
-## History View
+## 历史视图
 
-Open it using the "Open history view" command. It behaves like `git log` resulting in a list of the last commits. Each commit entry can be expanded to see the changed files in that commit. By clicking on a file, you can even see the diff.
+通过“打开历史视图”命令打开。它的行为类似于 `git log`，会显示最近提交的列表。每个提交项都可以展开以查看该提交中更改的文件。点击文件还可以查看差异。
 
-## Line Authoring
+## 行作者信息
 
-For each line, view the last time, it was modified: [[Line Authoring|Line Authoring]]. Technically known as `git-blame`.
+可以查看每一行最后一次被修改的时间：[[Line Authoring|行作者信息]]。技术上称为 `git-blame`。
 
-## Automatic commit-and-sync
+## 自动提交并同步
 
-See [[Start here#commit-and-sync|commit-and-sync]] for an explanation of the term. The goal of automatic commit-and-sync is that you can focus on taking notes and not care about saving your work, as this plugin will take care of it.
-There are multiple ways to trigger an automatic commit-and-sync. The default is a basic interval to run commit-and-sync every X minutes. Use the "Auto commit-and-sync interval" setting for that. The interval works across Obsidian sessions to ensure opening Obsidian only for short times doesn't prevent running commit-and-sync. For example, if you set a 15 minutes interval, you don't have to keep Obsidian open for 15 minutes. If you close Obsidian before the interval end, the commit-and-sync will automatically run the next time you start Obsidian.
+有关该术语的解释，请参见 [[Start here#commit-and-sync|提交并同步]]。自动提交并同步的目标是让你专注于记笔记，无需担心保存工作，因为插件会自动处理。
+有多种方式可以触发自动提交并同步。默认方式是每隔 X 分钟自动运行一次提交并同步。可通过“自动提交并同步间隔”设置进行调整。该间隔在 Obsidian 会话之间也有效，确保即使短时间打开 Obsidian 也不会错过自动提交。例如，设置为 15 分钟时，无需持续打开 Obsidian 15 分钟。如果在间隔结束前关闭 Obsidian，下次启动时会自动运行提交并同步。
 
-Another method is to enable "Auto commit-and-sync after stopping file edits". This waits X minutes after your latest change for the commit-and-sync. This is useful if you don't want to get interrupted by a commit while typing. 
+另一种方式是启用“停止编辑文件后自动提交并同步”。这会在你最后一次更改后等待 X 分钟再执行提交并同步。如果你不希望在输入时被打断，这个功能很有用。
 
-The last mode is the "Auto commit-and-sync after latest commit" setting. This sets the last commit-and-sync timestamp to the latest commit. By default, the plugin only compares with it's own latest run of commit-and-sync. So if you manually commit and want the commit-and-sync timer to reset, enable this setting.
+最后一种方式是“最新提交后自动提交并同步”设置。它会将最后一次提交并同步的时间戳设置为最新提交。默认情况下，插件只会与自身最近一次提交并同步进行比较。如果你手动提交并希望重置计时器，可以启用此设置。
 
-## Commit message
+## 提交信息
 
-The plugin uses [momentjs](https://momentjs.com/) for formatting the date, so read through their documentation on how to construct your date placeholder.
+插件使用 [momentjs](https://momentjs.com/) 格式化日期，请参考其文档了解如何构建日期占位符。
 
-## Submodules Support
+## 子模块支持
 
-Since version 1.10.0 submodules are supported. While adding/cloning new submodules is still not supported (might come later), updating existing submodules on the known "Commit-and-sync" and "Pull" commands is supported. This works even recursively. "Commit-and-sync" will cause adding, commit and push (if turned on) all changes in all submodules. This feature needs to be turned on in the settings.
+自 1.10.0 版本起支持子模块。目前还不支持添加/克隆新子模块（未来可能支持），但已支持在“提交并同步”和“拉取”命令中更新已知子模块，且支持递归操作。“提交并同步”会将所有子模块中的更改添加、提交并推送（如已开启）。该功能需在设置中开启。
 
-Additional **requirements**:
+额外**要求**：
 
-- Checked out branch (not just a commit as it is when running `git submodule update --init`)
-- Tracking branch is set up, so that `git push` works
-- Tracking branch needs to be fetched, so that a `git diff` with the branch works
+- 已检出分支（不能只是某个提交，如运行 `git submodule update --init` 时）
+- 已设置跟踪分支，以便 `git push` 可用
+- 需已获取跟踪分支，以便 `git diff` 能正常比较

@@ -6,82 +6,87 @@ aliases:
 
 ## HTTPS
 
-Run the following to use the macOS keychain to store your credentials.
+运行以下命令，将凭据存储在 macOS 钥匙串中。
 
 ```bash
 git config --global credential.helper osxkeychain
 ```
 
-You have to do one authentication action (clone/pull/push) after setting the helper in the terminal. After that you should be able to clone/pull/push in Obsidian without any issues.
+设置好 helper 后，需要在终端执行一次认证操作（如 clone/pull/push）。之后，你就可以在 Obsidian 中无障碍地进行 clone/pull/push 操作了。
 
 ## SSH
 
-Remember you still have to setup ssh correctly, like adding your SSH key to the `ssh-agent`. GitHub provides a great documentation on how to [generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#generating-a-new-ssh-key) and then on how to [add the SSH key to your ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent).
+你仍然需要正确设置 SSH，比如将 SSH 密钥添加到 `ssh-agent`。GitHub 提供了详细的文档，介绍如何[生成新的 SSH 密钥](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#generating-a-new-ssh-key)，以及如何[将 SSH 密钥添加到 ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=mac#adding-your-ssh-key-to-the-ssh-agent)。
 
 # Windows
 
 ## HTTPS
 
-Ensure you are using Git 2.29 or higher and you are using Git Credential Manager as a credential helper. 
-You can verify this by executing the following snippet in a terminal, preferably in the directory where your vault/repository is located. It should output `manager`.
+确保你使用的是 Git 2.29 或更高版本，并且使用 Git Credential Manager 作为凭据助手。
+你可以在终端（最好在你的 vault/仓库目录下）执行以下命令进行验证，输出应为 `manager`。
 
 ```bash
 git config credential.helper
 ```
 
-If this doesn't output `manager`, please run `git config set credential.helper manager`
-Just execute any authentication command like push/pull/clone and a pop window should come up, allowing your to sign in.
+如果输出不是 `manager`，请运行 `git config set credential.helper manager`。
+之后执行任意认证命令（如 push/pull/clone），会弹出窗口让你登录。
 
-Alternatively, you can also leave that setting empty and always provide the username and password manually via the prompted modal in Obsidian. All available credential helpers are listed [here](https://git-scm.com/doc/credential-helpers).,
+另外，你也可以将该设置留空，每次通过 Obsidian 弹出的窗口手动输入用户名和密码。所有可用的凭据助手可在[这里](https://git-scm.com/doc/credential-helpers)查看。
 
 ## SSH
-Remember you still have to setup ssh correctly, like adding your SSH key to the `ssh-agent`. GitHub provides a great documentation on how to [generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows#generating-a-new-ssh-key) and then on how to [add the SSH key to your ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows#adding-your-ssh-key-to-the-ssh-agent).
+
+你仍然需要正确设置 SSH，比如将 SSH 密钥添加到 `ssh-agent`。GitHub 提供了详细的文档，介绍如何[生成新的 SSH 密钥](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows#generating-a-new-ssh-key)，以及如何[将 SSH 密钥添加到 ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows#adding-your-ssh-key-to-the-ssh-agent)。
 
 # Linux
 
 ## HTTPS
 
-### Storing
+### 存储
 
-To securely store the username and password permanently without having to reenter it all the time you can use Git's [Credential Helper](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage). `libsecret` stores the password in a secure place. On GNOME it's backed up by [GNOME Keyring](https://wiki.gnome.org/Projects/GnomeKeyring/) and on KDE by [KDE Wallet](https://wiki.archlinux.org/title/KDE_Wallet).
-To set `libsecret` as your credential helper execute the following in the terminal from the directory of your vault/repository. You can also add the `--global` flag to set that setting for all other repositories on your device, too.
+要安全地永久存储用户名和密码，避免每次都输入，可以使用 Git 的[凭据助手](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage)。`libsecret` 会将密码安全地存储起来。在 GNOME 下由 [GNOME Keyring](https://wiki.gnome.org/Projects/GnomeKeyring/) 支持，在 KDE 下由 [KDE Wallet](https://wiki.archlinux.org/title/KDE_Wallet) 支持。
+要将 `libsecret` 设置为凭据助手，请在 vault/仓库目录下的终端执行以下命令。你也可以加上 `--global` 参数，将该设置应用于所有仓库。
 
 ```bash
 git config set credential.helper libsecret
 ```
 
-You have to do one authentication action (clone/pull/push) after setting the helper in the terminal. After that you should be able to clone/pull/push in Obsidian without any issues.
+设置好 helper 后，需要在终端执行一次认证操作（如 clone/pull/push）。之后，你就可以在 Obsidian 中无障碍地进行 clone/pull/push 操作了。
 
-In case you get the message `git: 'credential-libsecret' is not a git command`, libsecret is not installed on your system. You may have to install it by yourself.
-Here is an example for Ubuntu.
+如果出现 `git: 'credential-libsecret' is not a git command` 的提示，说明系统未安装 libsecret。你需要自行安装。
+以下是 Ubuntu 的安装示例：
 
 ```bash
 sudo apt install libsecret-1-0 libsecret-1-dev make gcc
 
 sudo make --directory=/usr/share/doc/git/contrib/credential/libsecret
 
-# NOTE: This changes your global config, in case you don't want that you can omit the `--global` and execute it in your existing git repository.
+# 注意：这会更改你的全局配置，如果不想全局生效，可以去掉 `--global`，在现有仓库中执行。
 git config --global credential.helper \
    /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 
 ```
 
-### SSH_PASS Tools
-When Git is not connected to any terminal, so  you can't enter your username/password in the terminal, it relies on the `GIT_ASKPASS`/`SSH_ASKPASS` environment variable to provide an interface to the user to enter those values.
+### SSH_PASS 工具
 
-#### Native SSH_ASKPASS
-In case you don't want to store it permanently you can install `ksshaskpass` (it's preinstalled on KDE systems) and set it as binary to ask for the password.
+当 Git 没有连接到终端，无法输入用户名/密码时，会依赖 `GIT_ASKPASS`/`SSH_ASKPASS` 环境变量，提供界面让用户输入这些信息。
 
-To use `ksshaskpass` in Obsidian as the tool for `SSH_ASKPASS` add the following line to the "Additional Environment Variables" in the plugin's settings in the "Advanced" section.
+#### 原生 SSH_ASKPASS
+
+如果你不想永久存储密码，可以安装 `ksshaskpass`（KDE 系统默认已安装），并将其设置为 SSH_ASKPASS 工具。
+
+要在 Obsidian 中使用 `ksshaskpass` 作为 `SSH_ASKPASS` 工具，请在插件设置的“高级”部分的“附加环境变量”中添加如下内容：
 
 ```
 SSH_ASKPASS=ksshaskpass
 ```
 
-You should get a new window to enter your username/password when using a Git action needing authentication now.
+之后，执行需要认证的 Git 操作时，会弹出窗口让你输入用户名/密码。
 
-#### SSH_PASS integrated in Obsidian
-The plugin now automatically provides an integrated script for the `SSH_ASKPASS` environment variable, if no other program is set, that opens a modal in Obsidian whenever Git asks for username or password.
+#### Obsidian 集成的 SSH_PASS
+
+如果没有设置其他程序，插件会自动为 `SSH_ASKPASS` 环境变量提供集成脚本，在 Git 需要用户名或密码时，会在 Obsidian 中弹出窗口输入。
 
 ## SSH
-With one of the above [[#SSH_PASS Tools]]  installed to enter your passphrase, you can use ssh with a passphrase. Remember you still have to setup ssh correctly, like adding your SSH key to the `ssh-agent`. GitHub provides a great documentation on how to [generate a new SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux#generating-a-new-ssh-key) and then on how to [add the SSH key to your ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linuxu#adding-your-ssh-key-to-the-ssh-agent).
+
+有了上述任一 [[#SSH_PASS 工具]]，你就可以使用带密码的 ssh。你仍然需要正确设置 SSH，比如将 SSH 密钥添加到 `ssh-agent`。GitHub 提供了详细的文档，介绍如何[生成新的 SSH 密钥](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux#generating-a-new-ssh-key)，以及如何[将 SSH 密钥添加到 ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linuxu#adding-your-ssh-key-to-the-ssh-agent)。

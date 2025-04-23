@@ -1,37 +1,35 @@
-# Tips and Tricks
+# 技巧与提示
 
 ## Gitignore
 
-To exclude cache files from the repository, create `.gitignore` file in the root of your vault and add the lines in the snippet below.
-There's also the `Edit .gitignore` command that will open the file in a modal.
+要将缓存文件排除在仓库之外，请在你的库根目录下创建 `.gitignore` 文件，并添加以下内容。你也可以使用 `Edit .gitignore` 命令在弹窗中打开该文件。
 
 ```
-# to exclude Obsidian's settings (including plugin and hotkey configurations)
+# 排除 Obsidian 的设置（包括插件和快捷键配置）
 .obsidian/
 
-# to only exclude plugin configuration. Might be useful to prevent some plugin from exposing sensitive data
+# 仅排除插件配置。适用于防止某些插件暴露敏感数据
 .obsidian/plugins
 
-# OR only to exclude workspace cache
+# 或仅排除工作区缓存
 .obsidian/workspace.json
 
-# to exclude workspace cache specific to mobile devices
+# 排除特定于移动设备的工作区缓存
 .obsidian/workspace-mobile.json
 
-# Add below lines to exclude OS settings and caches
+# 排除操作系统设置和缓存
 .trash/
 .DS_Store
 ```
 
+## 配合 Obsidian Sync 使用
 
-## Usage with Obsidian Sync
+常见的用法是：用 Obsidian Sync 在所有设备间同步笔记，用 Git 作为备份和版本历史。
 
-A common use case for using git and Obsidian Sync is to use Obsidian Sync to actually sync between all your devices and Git as a form of backup and version history.
+### 只在一台设备上使用 Git 插件
 
-### Use Git plugin only on one device
+如果你同步了已启用的插件及其设置，Git 插件可能会在没有 `.git` 目录或你不希望自动运行的设备上启用。为解决此问题，可以在插件设置的“高级”中启用“在此设备上禁用”选项。该设置不会同步到其他设备。
 
-In case you are syncing your enabled plugins and their settings, the Git plugin is enabled and running even though the `.git` directory doesn't exist or you don't want to run automatics on that device. To fix this, you can enable the "Disable on this device" option under "Advanced" in the plugin settings. That setting is not synced to other devices.
+### 使用 Git 插件但不拉取文件
 
-### Use Git plugin, but not to pull your files
-
-Another use case might be that you don't want to update your files on pull, because Obsidian Sync already updated your files. You can still commit/push/commit-and-sync. To accomplish this use "Other sync service" as "Merge strategy" under "Pull". This only updates the HEAD to the latest commit on pull, but doesn't change your files at all.
+有时你可能不希望通过拉取操作更新文件，因为 Obsidian Sync 已经同步了文件。你仍然可以提交、推送或同步。为此，在“拉取”设置中将“其他同步服务”设为“合并策略”。这样拉取时只会更新 HEAD 到最新提交，不会更改你的文件。
