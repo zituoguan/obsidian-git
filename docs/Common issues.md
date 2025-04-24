@@ -1,3 +1,7 @@
+---
+title: 08 常见问题
+---
+
 ## xcrun: error: invalid developer path
 
 此错误仅发生在 macOS 上。修复方法很简单，只需在终端运行以下命令：`xcode-select --install`。参见 #64 作为示例。

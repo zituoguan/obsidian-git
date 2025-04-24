@@ -1,3 +1,7 @@
+---
+title: 06 行作者
+---
+
 # 快速用户指南
 
 本指南简要展示了所有功能。此功能基于 [git-blame](https://git-scm.com/docs/git-blame)。

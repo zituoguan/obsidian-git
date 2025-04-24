@@ -1,6 +1,5 @@
 ---
-aliases:
-  - 02 安装
+title: 02 安装
 ---
 
 > [!important]

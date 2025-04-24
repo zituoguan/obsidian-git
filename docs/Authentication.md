@@ -1,6 +1,5 @@
 ---
-aliases:
-  - "04 Authentication"
+title: 04 认证
 ---
 # macOS
 

@@ -1,6 +1,5 @@
 ---
-aliases:
-  - "01 Start here"
+title: 01 从这里开始"
 ---
 
 # Git 插件文档
